@@ -10,6 +10,8 @@ const fs = require("fs");
 var url = require("url");
 var StringDecoder = require("string_decoder").StringDecoder;
 var config = require("./config");
+var handlers = require("./lib/handlers");
+var helpers = require("./lib/helpers");
 var _data = require("./lib/data");
 
 // //Testing
@@ -104,7 +106,7 @@ var unifiedServer = function (req, res) {
       queryStringObject: queryStringObject,
       method: method,
       headers: headers,
-      payload: buffer,
+      payload: helpers.parseJsonToObject(buffer),
     };
 
     chosenHandler(data, function (statuscode, payload) {
@@ -125,19 +127,8 @@ var unifiedServer = function (req, res) {
   });
 };
 
-//Define the handlers
-var handlers = {};
-
-//Define the sample handler
-handlers.ping = function (data, callback) {
-  callback(200);
-};
-
-handlers.notFound = function (data, callback) {
-  callback(404);
-};
-
 //Define a request router
 var router = {
   ping: handlers.ping,
+  users: handlers.users,
 };
