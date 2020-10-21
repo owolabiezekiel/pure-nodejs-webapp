@@ -82,7 +82,7 @@ var unifiedServer = function (req, res) {
   var queryStringObject = parsedURL.query;
 
   //Get the headers as an object
-  var headers = parsedURL.headers;
+  var headers = req.headers;
 
   //Get the HTTP method
   var method = req.method.toLowerCase();
@@ -131,4 +131,5 @@ var unifiedServer = function (req, res) {
 var router = {
   ping: handlers.ping,
   users: handlers.users,
+  tokens: handlers.tokens,
 };
