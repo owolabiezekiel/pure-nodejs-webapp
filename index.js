@@ -12,39 +12,14 @@ var StringDecoder = require("string_decoder").StringDecoder;
 var config = require("./config");
 var handlers = require("./lib/handlers");
 var helpers = require("./lib/helpers");
-var _data = require("./lib/data");
 
-// //Testing
-// // @TODO  create test file
-// _data.create(
-//   "test",
-//   "newFile",
-//   { firstname: "tobi", lastname: "owolabi" },
+// helpers.sendTwilioSms(
+//   "8106723916",
+//   "Hello There. this is a test sms",
 //   function (err) {
-//     console.log("This is the error: ", err);
+//     console.log("This was the error: ", err);
 //   }
 // );
-
-// // @TODO  update test file
-// _data.update(
-//   "test",
-//   "newFile",
-//   { firstname: "Ozoduwa", lastname: "Ifeoma" },
-//   function (err) {
-//     console.log("After Updating\nThis is the error: ", err);
-//   }
-// );
-
-// // @TODO read test file
-// _data.read("test", "newFile", function (err, data) {
-//   console.log("The error is ", err, " and the data is ", data);
-// });
-
-// // @TODO delete test file
-// _data.delete("test", "newFile", function (err) {
-//   console.log("The error is ", err);
-// });
-
 //Instantiate the HTTP server
 var httpServer = http.createServer(function (req, res) {
   unifiedServer(req, res);
